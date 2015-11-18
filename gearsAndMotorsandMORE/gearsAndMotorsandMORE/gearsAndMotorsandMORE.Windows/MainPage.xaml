@@ -32,7 +32,9 @@
                     <TextBlock Text="Gears" FontSize="48" HorizontalAlignment="Center"></TextBlock>
                 </Border>
                 <Border Grid.Row="1" BorderBrush = "White" BorderThickness = "5">
-                    <GridView></GridView>
+                    <GridView>
+                        
+                    </GridView>
                 </Border>
             </Grid>
             <Grid x:Name="MotorGrid" Grid.Column="1">
