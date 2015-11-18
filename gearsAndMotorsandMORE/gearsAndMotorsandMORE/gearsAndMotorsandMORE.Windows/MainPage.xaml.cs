@@ -22,9 +22,14 @@ namespace gearsAndMotorsandMORE
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        IGearLibrary gearLib;
         public MainPage()
         {
             this.InitializeComponent();
+
+            gearLib = new ConstantGears();
+
+            lstViewGears.ItemsSource = gearLib.Gears;
         }
     }
 }

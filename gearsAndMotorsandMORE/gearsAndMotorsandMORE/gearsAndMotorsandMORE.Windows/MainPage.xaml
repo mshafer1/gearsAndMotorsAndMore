@@ -32,9 +32,16 @@
                     <TextBlock Text="Gears" FontSize="48" HorizontalAlignment="Center"></TextBlock>
                 </Border>
                 <Border Grid.Row="1" BorderBrush = "White" BorderThickness = "5">
-                    <GridView>
-                        
-                    </GridView>
+                    <ListView Margin="10"  Name="lstViewGears">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Image Source="{Binding Picture}"></Image>
+                                    <TextBlock Text="{Binding Teeth}" Name="Teeth"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Border>
             </Grid>
             <Grid x:Name="MotorGrid" Grid.Column="1">
