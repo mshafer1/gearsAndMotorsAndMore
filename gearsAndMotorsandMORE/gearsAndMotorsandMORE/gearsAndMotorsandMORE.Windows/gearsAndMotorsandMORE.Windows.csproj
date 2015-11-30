@@ -121,7 +121,9 @@
     <None Include="gearsAndMotorsandMORE.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="18THex.png" />
+    <EmbeddedResource Include="18THex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="20THex.png" />
     <Content Include="24THex.png" />
     <Content Include="30THex.png" />

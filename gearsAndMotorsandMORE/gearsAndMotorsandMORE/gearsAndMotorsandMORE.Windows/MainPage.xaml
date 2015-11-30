@@ -35,7 +35,7 @@
                     <ListView Margin="10"  Name="lstViewGears">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel>
+                                <StackPanel Orientation="Vertical">
                                     <Image Source="{Binding Picture}"></Image>
                                     <TextBlock Text="{Binding Teeth}" Name="Teeth"></TextBlock>
                                 </StackPanel>
