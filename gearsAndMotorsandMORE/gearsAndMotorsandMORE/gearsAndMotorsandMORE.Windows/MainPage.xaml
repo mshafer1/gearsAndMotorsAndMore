@@ -36,7 +36,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <Image Source="{Binding Picture}"></Image>
+                                    <Image Source="{Binding ImageProperty}"></Image>
                                     <TextBlock Text="{Binding Teeth}" Name="Teeth"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
@@ -109,5 +109,6 @@
             </Grid>
 
         </Grid>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="1104,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="Assets/18THex.png"/>
     </Grid>
 </Page>
