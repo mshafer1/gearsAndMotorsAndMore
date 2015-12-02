@@ -107,11 +107,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConstantGears.cs" />
+    <Compile Include="ConstantMotors.cs" />
     <Compile Include="Gear.cs" />
     <Compile Include="IGearLibrary.cs" />
+    <Compile Include="IMotorLibrary.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Motor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
