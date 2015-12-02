@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Motor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SandboxItems.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -131,6 +132,9 @@
     <Content Include="Assets\24THex.png" />
     <Content Include="Assets\30THex.png" />
     <Content Include="Assets\36THex.png" />
+    <Content Include="Assets\BaneBots-M7‐RS775‐18.png" />
+    <Content Include="Assets\CIM.png" />
+    <Content Include="Assets\DragHere.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />

@@ -6,26 +6,52 @@ using System.Threading.Tasks;
 
 namespace gearsAndMotorsandMORE
 {
-    class Motor
+    class Motor: SandboxItem
     {
         public Motor()
         {
-            Teeth = 0;
-            ImagePath = "";
+            CommonName = "";
+            FreeRPM = 0;
+            StallTorque = 0;
+            FreeCurrent = 0;
+            StallCurrent = 0;
+            SideImagePath = "";
+            FrontImagePath = "";
             PartNumber = "";
         }
 
 
-        public Motor(int teeth, string path, string number)
+        public Motor(string commonName, int freeRPM, float stallTorque, float freeCurrent, float stallCurrent, string frontPath, string sidePath, string number)
         {
-            Teeth = teeth;
-            ImagePath = path;
+            CommonName = commonName;
+            FreeRPM = freeRPM;
+            StallTorque = stallTorque;
+            FreeCurrent = freeCurrent;
+            StallCurrent = stallCurrent;
+            SideImagePath = sidePath;
+            FrontImagePath = frontPath;
             PartNumber = number;
         }
-        public int Teeth { get; set; }
 
-        public string ImagePath { get; set; }
+        public string CommonName { get; set;}
+
+        public int FreeRPM { get; set; }
+
+        public float StallTorque { get; set; }
+
+        public float FreeCurrent { get; set; }
+
+        public float StallCurrent { get; set; }
+
+        public string FrontImagePath { get; set; }
+
+        public string SideImagePath { get; set; }
 
         public string PartNumber { get; set; }
+
+        public override string SandboxImagePath()
+        {
+            return FrontImagePath;
+        }
     }
 }

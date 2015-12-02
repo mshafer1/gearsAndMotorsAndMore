@@ -64,8 +64,8 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{Binding ImagePath}"></Image>
-                                    <TextBlock Text="{Binding Teeth}" Name="Teeth"></TextBlock>
+                                    <Image Source="{Binding SideImagePath}" Width="100"></Image>
+                                    <TextBlock Text="{Binding CommonName}" Name="CommonName"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -122,6 +122,11 @@
                 </Border>
             </Grid>
 
-        </Grid> 
+        </Grid>
+        <StackPanel x:Name="sandbox" Grid.Row= "1">
+            <ItemsControl>
+                <Image Source="{Binding SandboxImagePath}" Width="100"></Image>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </Page>

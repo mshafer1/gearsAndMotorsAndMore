@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Media;
 
 namespace gearsAndMotorsandMORE
 {
-    class Gear
+    class Gear: SandboxItem
     {
         public Gear()
         {
@@ -35,5 +35,10 @@ namespace gearsAndMotorsandMORE
         public string ImagePath { get; set; }
 
         public string PartNumber { get; set; }
+
+        public override string SandboxImagePath()
+        {
+            return ImagePath;
+        }
     }
 }
