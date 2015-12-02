@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Imaging;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using Windows.Storage.Streams;
-using Windows.Storage;
-using Windows.UI.Xaml.Media;
 
 namespace gearsAndMotorsandMORE
 {
-    class Gear
+    class Motor
     {
-        public Gear()
+        public Motor()
         {
             Teeth = 0;
             ImagePath = "";
@@ -24,7 +16,7 @@ namespace gearsAndMotorsandMORE
         }
 
 
-        public Gear(int teeth, string path, string number)
+        public Motor(int teeth, string path, string number)
         {
             Teeth = teeth;
             ImagePath = path;

@@ -8,13 +8,18 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="500">
+            <RowDefinition Height="40">
             </RowDefinition>
+            <RowDefinition Height="460"/>
             <RowDefinition Height="200*">
             </RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -35,8 +40,8 @@
                     <ListView Margin="10"  Name="lstViewGears">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <Image Source="{Binding Picture}"></Image>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding ImagePath}"></Image>
                                     <TextBlock Text="{Binding Teeth}" Name="Teeth"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
@@ -55,7 +60,16 @@
                     <TextBlock  Text="Motors" FontSize="48" HorizontalAlignment="Center"></TextBlock>
                 </Border>
                 <Border Grid.Row="1" BorderBrush = "White" BorderThickness = "5">
-                    <GridView></GridView>
+                    <ListView Margin="10"  Name="lstViewMotors">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding ImagePath}"></Image>
+                                    <TextBlock Text="{Binding Teeth}" Name="Teeth"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Border>
             </Grid>
 
@@ -108,6 +122,6 @@
                 </Border>
             </Grid>
 
-        </Grid>
+        </Grid> 
     </Grid>
 </Page>

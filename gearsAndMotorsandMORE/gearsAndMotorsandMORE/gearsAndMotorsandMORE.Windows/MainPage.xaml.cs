@@ -23,13 +23,17 @@ namespace gearsAndMotorsandMORE
     public sealed partial class MainPage : Page
     {
         IGearLibrary gearLib;
+        IMotorLibrary motorLib;
+
         public MainPage()
         {
             this.InitializeComponent();
 
             gearLib = new ConstantGears();
+            motorLib = new ConstantMotors();
 
             lstViewGears.ItemsSource = gearLib.Gears;
+            lstViewMotors.ItemsSource = motorLib.Motors;
         }
     }
 }
