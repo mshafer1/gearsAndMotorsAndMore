@@ -18,6 +18,21 @@ namespace gearsAndMotorsandMORE
         }
 
         protected List<Gear> data;
+
+        public Gear findGear(string uri)
+        {
+            Gear foundGear = new Gear();
+
+            foreach (Gear g in data)
+            {
+                if ("/" + g.SandboxImagePath == uri)
+                {
+                    foundGear = g;
+                }
+            }
+
+            return foundGear;
+        }
         protected abstract void addGear(Gear newGear);
     }
 }

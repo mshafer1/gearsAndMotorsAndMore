@@ -41,7 +41,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{Binding ImagePath}"></Image>
+                                    <Image x:Name="gearImage" Source="{Binding ImagePath}" PointerMoved="Gear_PointerMoved_1" PointerPressed="gearImage_PointerPressed" PointerReleased="gearImage_PointerReleased"></Image>
                                     <TextBlock Text="{Binding Teeth}" Name="Teeth"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
@@ -64,7 +64,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{Binding SideImagePath}" Width="100"/>
+                                    <Image x:Name="motorImage" Source="{Binding SideImagePath}" Width="100" PointerMoved="Motor_PointerMoved" PointerPressed="motorImage_PointerPressed" PointerReleased="motorImage_PointerReleased"/>
                                     <TextBlock Text="{Binding CommonName}" Name="CommonName"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
@@ -127,12 +127,8 @@
             <Image Source="{Binding SandboxImagePath}" Width="100"></Image>
         </StackPanel>-->
         <Border Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderBrush = "White" BorderThickness = "5">
-            <GridView Margin="10"  Name="sandbox" Background="DarkGray" CanDragItems="True" DragOver="sandbox_DragOver" Drop="sandbox_Drop" > 
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding SandboxImagePath}" Width="100"></Image>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
+            <GridView Margin="10"  Name="sandbox" Background="DarkGray">
+                <Image x:Name="dragHereImage" Height="200" Width="200" Source="Assets/DragHere.png" PointerReleased="sandbox_PointerReleased"/>
             </GridView>
         </Border>
     </Grid>

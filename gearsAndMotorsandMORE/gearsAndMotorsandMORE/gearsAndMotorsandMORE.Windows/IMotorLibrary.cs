@@ -18,6 +18,21 @@ namespace gearsAndMotorsandMORE
         }
 
         protected List<Motor> data;
+
+        public Motor findMotor(string uri)
+        {
+            Motor foundMotor = new Motor();
+
+            foreach (Motor m in data)
+            {
+                if("/" + m.SandboxImagePath == uri)
+                {
+                    foundMotor = m;
+                }
+            }
+
+            return foundMotor;
+        }
         protected abstract void addMotor(Motor newMotor);
     }
 }
