@@ -111,6 +111,7 @@
     <Compile Include="Gear.cs" />
     <Compile Include="IGearLibrary.cs" />
     <Compile Include="IMotorLibrary.cs" />
+    <Compile Include="ISandboxItemLibrary.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

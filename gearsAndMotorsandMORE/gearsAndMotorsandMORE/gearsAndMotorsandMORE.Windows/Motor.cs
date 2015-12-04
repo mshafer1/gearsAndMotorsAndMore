@@ -49,7 +49,7 @@ namespace gearsAndMotorsandMORE
 
         public string PartNumber { get; set; }
 
-        public override string SandboxImagePath()
+        public override string GetSandboxImagePath()
         {
             return FrontImagePath;
         }

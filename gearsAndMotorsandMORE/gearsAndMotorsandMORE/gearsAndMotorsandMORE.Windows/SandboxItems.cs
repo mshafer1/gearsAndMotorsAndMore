@@ -8,6 +8,14 @@ namespace gearsAndMotorsandMORE
 {
     abstract class SandboxItem
     {
-        abstract public string SandboxImagePath();
+        abstract public string GetSandboxImagePath();
+
+        public string SandboxImagePath
+        {
+            get
+            {
+                return GetSandboxImagePath();
+            }
+        }
     }
 }

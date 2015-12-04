@@ -24,6 +24,7 @@ namespace gearsAndMotorsandMORE
     {
         IGearLibrary gearLib;
         IMotorLibrary motorLib;
+        ISandboxItemLibrary sandboxItemLib;
 
         public MainPage()
         {
@@ -31,9 +32,22 @@ namespace gearsAndMotorsandMORE
 
             gearLib = new ConstantGears();
             motorLib = new ConstantMotors();
+            sandboxItemLib = new ISandboxItemLibrary();
 
             lstViewGears.ItemsSource = gearLib.Gears;
             lstViewMotors.ItemsSource = motorLib.Motors;
+            //sandbox.ItemsSource = sandboxItemLib.SandboxItems;
+        }
+
+
+        private void sandbox_DragOver(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void sandbox_Drop(object sender, DragEventArgs e)
+        {
+            sandbox.ItemsSource = sandboxItemLib.SandboxItems;
         }
     }
 }
