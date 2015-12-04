@@ -11,14 +11,6 @@ namespace gearsAndMotorsandMORE
         public ISandboxItemLibrary()
         {
             data = new List<SandboxItem>();
-            string image = "Assets/18THex.png";
-            Gear gear = new Gear(18, image, "217-3209");
-            gear.ImagePath = image;
-            addSandboxItem(gear);
-            image = "Assets/18THex.png";
-            gear = new Gear(18, image, "217-3209");
-            gear.ImagePath = image;
-            addSandboxItem(gear);
         }
         public List<SandboxItem> SandboxItems
         {

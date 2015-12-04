@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gearsAndMotorsandMORE.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,6 +34,10 @@ namespace gearsAndMotorsandMORE
 
         public MainPage()
         {
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += navigationHelper_LoadState;
+            this.navigationHelper.SaveState += navigationHelper_SaveState;
+
             this.InitializeComponent();
 
             gearLib = new ConstantGears();
@@ -118,5 +123,87 @@ namespace gearsAndMotorsandMORE
         {
             pressed = false;
         }
+
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        public ObservableDictionary DefaultViewModel
+        {
+            get { return this.defaultViewModel; }
+        }
+
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+
+        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        {
+            if (e.PageState != null && e.PageState.ContainsKey("sandboxItemString"))
+            {
+                repopulateSandbox(e.PageState["sandboxItemString"].ToString());
+            }
+
+        }
+
+        private void repopulateSandbox (string itemsString)
+        {
+            List<string> itemList = new List<string>();
+
+            int wordCount = 0;
+            itemList[0] = "";
+
+            for (int i = 0; i < itemsString.Count(); i++)
+            {
+                if(itemsString[i] == ' ')
+                {
+                    wordCount++;
+                    itemList[wordCount] = "";
+                }
+                else
+                {
+                    itemList[wordCount] = itemList[wordCount] + itemsString[i];
+                }
+            }
+
+            foreach (string s in itemList)
+            {
+                Motor savedItem = motorLib.findMotor(s);
+
+                sandboxItemLib.SandboxItems.Add(savedItem);
+            }
+        }
+
+        private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+            e.PageState["sandboxItemString"] = toSandboxString(sandboxItemLib.SandboxItems);
+        }
+
+        private string toSandboxString(List<SandboxItem> sandboxItems)
+        {
+            string result = "";
+
+            foreach (SandboxItem s in sandboxItems)
+            {
+                result = result + s.SandboxImagePath.ToString() + " ";
+            }
+
+            return result;
+        }
+
+        #region NavigationHelper registration
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedFrom(e);
+        }
+
+        #endregion
+
     }
 }
