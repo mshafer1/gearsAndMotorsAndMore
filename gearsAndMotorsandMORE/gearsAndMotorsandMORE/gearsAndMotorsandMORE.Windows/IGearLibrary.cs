@@ -33,6 +33,21 @@ namespace gearsAndMotorsandMORE
 
             return foundGear;
         }
+        public bool isGear(string item)
+        {
+            bool result = false;
+
+            foreach (Gear g in data)
+            {
+                if (g.SandboxImagePath == item)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+        }
+
         protected abstract void addGear(Gear newGear);
     }
 }

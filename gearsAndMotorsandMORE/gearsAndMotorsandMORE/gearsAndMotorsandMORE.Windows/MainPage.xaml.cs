@@ -61,22 +61,29 @@ namespace gearsAndMotorsandMORE
 
                 GridViewItem myGVImage = new GridViewItem();
 
-                String stringPath = "ms-appx:///" + draggedItem.SandboxImagePath;
-                Uri imageUri = new Uri(stringPath, UriKind.Absolute);
-                BitmapImage imageBitmap = new BitmapImage(imageUri);
-                Image myImage = new Image();
-                myImage.Source = imageBitmap;
-                myImage.Height = 200;
-                myImage.Width = 200;
-
-                myGVImage.Content = myImage;
-
-                sandbox.Items.Remove(sandbox.Items.Last());
-                sandbox.Items.Add(myGVImage);
-                sandbox.Items.Add(dragHereImage);
+                addImage(draggedItem);
                 
                 isDragged = false;
             }
+        }
+
+        private void addImage(SandboxItem itemToAdd)
+        {
+            GridViewItem myGVImage = new GridViewItem();
+
+            String stringPath = "ms-appx:///" + itemToAdd.SandboxImagePath;
+            Uri imageUri = new Uri(stringPath, UriKind.Absolute);
+            BitmapImage imageBitmap = new BitmapImage(imageUri);
+            Image myImage = new Image();
+            myImage.Source = imageBitmap;
+            myImage.Height = 200;
+            myImage.Width = 200;
+
+            myGVImage.Content = myImage;
+
+            sandbox.Items.Remove(sandbox.Items.Last());
+            sandbox.Items.Add(myGVImage);
+            sandbox.Items.Add(dragHereImage);
         }
 
         private void Motor_PointerMoved(object sender, PointerRoutedEventArgs e)
@@ -151,14 +158,14 @@ namespace gearsAndMotorsandMORE
             List<string> itemList = new List<string>();
 
             int wordCount = 0;
-            itemList[0] = "";
+            itemList.Add("");
 
             for (int i = 0; i < itemsString.Count(); i++)
             {
                 if(itemsString[i] == ' ')
                 {
                     wordCount++;
-                    itemList[wordCount] = "";
+                    itemList.Add("");
                 }
                 else
                 {
@@ -168,9 +175,24 @@ namespace gearsAndMotorsandMORE
 
             foreach (string s in itemList)
             {
-                Motor savedItem = motorLib.findMotor(s);
+                if(s == "")
+                {
+                    //do nothing
+                }
 
-                sandboxItemLib.SandboxItems.Add(savedItem);
+                else if(gearLib.isGear(s))
+                {
+                    Gear savedGear = gearLib.findGear("/" + s);
+                    addImage(savedGear);
+                    sandboxItemLib.SandboxItems.Add(savedGear);
+                }
+                else if(motorLib.isMotor(s))
+                {
+                    Motor savedMotor = motorLib.findMotor("/" + s);
+                    addImage(savedMotor);
+                    sandboxItemLib.SandboxItems.Add(savedMotor);
+                }
+                
             }
         }
 
