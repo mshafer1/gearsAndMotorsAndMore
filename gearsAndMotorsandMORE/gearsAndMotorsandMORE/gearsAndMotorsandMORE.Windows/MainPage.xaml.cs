@@ -85,7 +85,6 @@ namespace gearsAndMotorsandMORE
 
             myGVImage.Content = myImage;
 
-
             sandbox.Children.Remove(sandbox.Children.Last());
             sandbox.Children.Add(myGVImage);
             sandbox.Children.Add(dragHereImage);
@@ -157,7 +156,6 @@ namespace gearsAndMotorsandMORE
             {
                 repopulateSandbox(e.PageState["sandboxItemString"].ToString());
             }
-
         }
 
         private void repopulateSandbox (string itemsString)
