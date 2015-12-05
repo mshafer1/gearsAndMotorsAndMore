@@ -266,13 +266,18 @@ namespace gearsAndMotorsandMORE
 
         private void DeleteLast_Click(object sender, RoutedEventArgs e)
         {
-            sandbox.Children.Remove(sandbox.Children.Last());
-            sandbox.Children.Remove(sandbox.Children.Last());
-            sandbox.Children.Add(dragHereImage);
+            if (sandbox.Children.Count > 0)
+            {
+                sandbox.Children.Remove(sandbox.Children.Last());
+                sandbox.Children.Remove(sandbox.Children.Last());
+                sandbox.Children.Add(dragHereImage);
 
-            sandboxItemLib.SandboxItems.Remove(sandboxItemLib.SandboxItems.Last());
+                sandboxItemLib.SandboxItems.Remove(sandboxItemLib.SandboxItems.Last());
 
-            gbCalculator.Items.Remove(gbCalculator.Items.Last());
+                gbCalculator.Items.Remove(gbCalculator.Items.Last());
+            }
+            lstViewGears.IsEnabled = gbCalculator.Items.Count != 0;
+
         }
 
         private void ClearAll_Click(object sender, RoutedEventArgs e)
@@ -281,6 +286,8 @@ namespace gearsAndMotorsandMORE
             sandboxItemLib.SandboxItems.Clear();
             sandbox.Children.Add(dragHereImage);
             gbCalculator.Items.Clear();
+
+            lstViewGears.IsEnabled = false;
         }
     }
 }
