@@ -21,17 +21,19 @@ namespace gearsAndMotorsandMORE
 
         public Motor findMotor(string uri)
         {
-            Motor foundMotor = new Motor();
+            //Motor foundMotor = new Motor();
 
-            foreach (Motor m in data)
-            {
-                if("/" + m.SandboxImagePath == uri)
-                {
-                    foundMotor = m;
-                }
-            }
+            //foreach (Motor m in data)
+            //{
+            //    if("/" + m.SandboxImagePath == uri)
+            //    {
+            //        foundMotor = m;
+            //    }
+            //}
 
-            return foundMotor;
+            //return foundMotor;
+
+            return data.Find(x => "/" + x.SandboxImagePath == uri);
         }
 
         public bool isMotor(string item)

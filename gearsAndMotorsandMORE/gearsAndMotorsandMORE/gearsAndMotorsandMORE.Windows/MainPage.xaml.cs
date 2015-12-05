@@ -27,6 +27,7 @@ namespace gearsAndMotorsandMORE
         IGearLibrary gearLib;
         IMotorLibrary motorLib;
         ISandboxItemLibrary sandboxItemLib;
+        GearBox gbCalculator;
 
         bool pressed;
         bool isDragged;
@@ -43,6 +44,7 @@ namespace gearsAndMotorsandMORE
             gearLib = new ConstantGears();
             motorLib = new ConstantMotors();
             sandboxItemLib = new ISandboxItemLibrary();
+            gbCalculator = new GearBox();
 
             lstViewGears.ItemsSource = gearLib.Gears;
             lstViewMotors.ItemsSource = motorLib.Motors;
@@ -62,9 +64,32 @@ namespace gearsAndMotorsandMORE
                 GridViewItem myGVImage = new GridViewItem();
 
                 addImage(draggedItem);
-                
+                addtoGearBox(draggedItem);
                 isDragged = false;
+                lstViewGears.IsEnabled = true;
             }
+        }
+
+        private void addtoGearBox(SandboxItem itemToAdd)
+        {
+            bool isMotor = motorLib.isMotor(itemToAdd.SandboxImagePath.ToString());
+            if(isMotor)
+            {
+                Motor motorToSave = motorLib.findMotor("/" + itemToAdd.SandboxImagePath.ToString());
+                gbCalculator.Items.Add(motorToSave);
+            }
+            else
+            {
+                Gear gearToSave = gearLib.findGear("/" + itemToAdd.SandboxImagePath.ToString());
+                gbCalculator.Items.Add(gearToSave);
+            }
+            doMath();
+        }
+
+        private void doMath()
+        {
+            //throw new NotImplementedException();
+            gbCalculator.checkGearBox();
         }
 
         private void addImage(SandboxItem itemToAdd)
@@ -76,8 +101,8 @@ namespace gearsAndMotorsandMORE
             BitmapImage imageBitmap = new BitmapImage(imageUri);
             Image myImage = new Image();
             myImage.Source = imageBitmap;
-
-            if (motorLib.isMotor(itemToAdd.SandboxImagePath.ToString()))
+            bool isMotor = motorLib.isMotor(itemToAdd.SandboxImagePath.ToString());
+            if (isMotor)
             {
                 myImage.Height = 200;
                 myImage.Width = 200;
@@ -89,7 +114,9 @@ namespace gearsAndMotorsandMORE
             sandbox.Children.Add(myGVImage);
             sandbox.Children.Add(dragHereImage);
 
-            lstViewGears.IsEnabled = true;
+            
+            
+            
         }
 
         private void Motor_PointerMoved(object sender, PointerRoutedEventArgs e)
@@ -244,6 +271,8 @@ namespace gearsAndMotorsandMORE
             sandbox.Children.Add(dragHereImage);
 
             sandboxItemLib.SandboxItems.Remove(sandboxItemLib.SandboxItems.Last());
+
+            gbCalculator.Items.Remove(gbCalculator.Items.Last());
         }
 
         private void ClearAll_Click(object sender, RoutedEventArgs e)
@@ -251,6 +280,7 @@ namespace gearsAndMotorsandMORE
             sandbox.Children.Clear();
             sandboxItemLib.SandboxItems.Clear();
             sandbox.Children.Add(dragHereImage);
+            gbCalculator.Items.Clear();
         }
     }
 }

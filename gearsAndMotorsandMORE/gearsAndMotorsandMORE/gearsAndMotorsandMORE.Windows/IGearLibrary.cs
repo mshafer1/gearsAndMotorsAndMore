@@ -21,17 +21,19 @@ namespace gearsAndMotorsandMORE
 
         public Gear findGear(string uri)
         {
-            Gear foundGear = new Gear();
+            //Gear foundGear = new Gear();
 
-            foreach (Gear g in data)
-            {
-                if ("/" + g.SandboxImagePath == uri)
-                {
-                    foundGear = g;
-                }
-            }
+            //foreach (Gear g in data)
+            //{
+            //    if ("/" + g.SandboxImagePath == uri)
+            //    {
+            //        foundGear = g;
+            //    }
+            //}
 
-            return foundGear;
+            //return foundGear;
+
+            return data.Find(x => "/" + x.SandboxImagePath == uri);
         }
         public bool isGear(string item)
         {

@@ -20,12 +20,12 @@ namespace gearsAndMotorsandMORE
      */
     class GearBox
     {
-        GearBox()
+        public GearBox()
         {
             Items = new List<SandboxItem>();
         }
 
-        GearBox(List<SandboxItem> t)
+        public GearBox(List<SandboxItem> t)
         {
             Items = new List<SandboxItem>(t);
         }
@@ -81,8 +81,8 @@ namespace gearsAndMotorsandMORE
 
                     if(lastGear > 0)
                     {
-                        netGearRatio *= (float)(lastGear/currentGear);
-                        finalGearRatio *= (float)(lastGear / currentGear);
+                        netGearRatio *= ((float)lastGear/currentGear);
+                        finalGearRatio *= ((float)lastGear / currentGear);
                     }
                     lastGear = currentGear;
                 }
