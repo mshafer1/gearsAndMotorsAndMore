@@ -125,9 +125,9 @@
         </Grid>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Border  BorderBrush = "White" BorderThickness = "5">
-                <StackPanel Orientation="Horizontal" Name="sandbox">
+                <GridView Margin="10,10,10,5"  Name="sandbox" Background="DarkGray" Height="188">
                     <Image x:Name="dragHereImage" Height="200" Width="200" Source="Assets/DragHere.png" PointerReleased="sandbox_PointerReleased"/>
-                </StackPanel>
+                </GridView>
             </Border>
             
         </StackPanel>
