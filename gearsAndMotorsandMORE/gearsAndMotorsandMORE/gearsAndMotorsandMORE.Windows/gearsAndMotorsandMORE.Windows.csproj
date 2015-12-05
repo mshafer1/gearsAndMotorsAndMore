@@ -116,6 +116,7 @@
     <Compile Include="ConstantGears.cs" />
     <Compile Include="ConstantMotors.cs" />
     <Compile Include="Gear.cs" />
+    <Compile Include="GearBox.cs" />
     <Compile Include="IGearLibrary.cs" />
     <Compile Include="IMotorLibrary.cs" />
     <Compile Include="ISandboxItemLibrary.cs" />
