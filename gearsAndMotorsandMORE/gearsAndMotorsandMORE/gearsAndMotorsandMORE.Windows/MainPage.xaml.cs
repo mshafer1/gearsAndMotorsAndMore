@@ -227,5 +227,25 @@ namespace gearsAndMotorsandMORE
 
         #endregion
 
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(About));
+        }
+
+        private void DeleteLast_Click(object sender, RoutedEventArgs e)
+        {
+            sandbox.Items.Remove(sandbox.Items.Last());
+            sandbox.Items.Remove(sandbox.Items.Last());
+            sandbox.Items.Add(dragHereImage);
+
+            sandboxItemLib.SandboxItems.Remove(sandboxItemLib.SandboxItems.Last());
+        }
+
+        private void ClearAll_Click(object sender, RoutedEventArgs e)
+        {
+            sandbox.Items.Clear();
+            sandboxItemLib.SandboxItems.Clear();
+            sandbox.Items.Add(dragHereImage);
+        }
     }
 }

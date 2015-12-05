@@ -7,6 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Height="714">
 
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="About" Label="Help" Icon="Help" Click="About_Click" />
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="DeleteLast" Label="Delete Last" Icon="ClearSelection" Click="DeleteLast_Click"/>
+                <AppBarButton x:Name="ClearAll" Label="Clear All" Icon="Delete" Click="ClearAll_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
@@ -129,17 +140,7 @@
                     <Image x:Name="dragHereImage" Height="200" Width="200" Source="Assets/DragHere.png" PointerReleased="sandbox_PointerReleased"/>
                 </GridView>
             </Border>
-            
+
         </StackPanel>
-        <AppBar>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal"/>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
-            </Grid>
-        </AppBar>
     </Grid>
 </Page>
