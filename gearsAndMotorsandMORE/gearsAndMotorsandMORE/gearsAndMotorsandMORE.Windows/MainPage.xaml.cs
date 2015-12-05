@@ -89,6 +89,8 @@ namespace gearsAndMotorsandMORE
             sandbox.Children.Remove(sandbox.Children.Last());
             sandbox.Children.Add(myGVImage);
             sandbox.Children.Add(dragHereImage);
+
+            lstViewGears.IsEnabled = true;
         }
 
         private void Motor_PointerMoved(object sender, PointerRoutedEventArgs e)
