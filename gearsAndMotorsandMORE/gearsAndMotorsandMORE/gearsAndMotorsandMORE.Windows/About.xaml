@@ -12,7 +12,7 @@
 
     <Page.Resources>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">My Application</x:String>
+        <x:String x:Key="AppName">About Gearbox Designer</x:String>
     </Page.Resources>
 
     <!--
@@ -46,5 +46,19 @@
             <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="749" Height="134" FontSize="40" TextAlignment="Center" Margin="313,48,304,0">
+        	<Run Text="Designed By: "/>
+        	<LineBreak/>
+        	<Run Text="Matthew Shafer and Emily Strandvold"/>
+        </TextBlock>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="70,290,0,-25" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="363" Width="1221" FontSize="29.333" TextAlignment="Center">
+        	<Run Text="Gearbox Designer is a tool for gear box designers like those in FIRST teams to use in designing robots. "/>
+        	<LineBreak/>
+        	<Run Text="It has a sandbox where users can drag in motors and gears in the order they appear in their gear box as well as input a couple other attributes about their robot. "/>
+        	<LineBreak/>
+        	<Run Text="The program then outputs if the robot will move or not and the robot's max speed."/>
+        </TextBlock>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="223" Margin="1067,15,0,0" Grid.Row="1" VerticalAlignment="Top" Width="253" Source="Assets/CIM.png"/>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="201" Margin="70,15,0,0" Grid.Row="1" VerticalAlignment="Top" Width="245" Source="Assets/36THex.png"/>
     </Grid>
 </Page>
