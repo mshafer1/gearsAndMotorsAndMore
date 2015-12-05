@@ -65,7 +65,7 @@
             <Image x:Name="image1" Grid.Row="0" Grid.Column="2" Source="Assets/36THex.png"/>
             <TextBlock x:Name="textBlock1" Grid.Row="1" Grid.ColumnSpan="3" TextWrapping="Wrap" FontSize="35
                        " TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
-        	<Run Text="Gearbox Designer is a tool for gear box designers like those in FIRST teams to use in designing robots. "/>
+        	<Run Text="Gearbox Designer is a tool for gear box designers like FIRST teams to use in designing robots. "/>
         	<LineBreak/>
         	<Run Text="It has a sandbox where users can drag in motors and gears in the order they appear in their gear box as well as input a couple other attributes about their robot. "/>
         	<LineBreak/>
