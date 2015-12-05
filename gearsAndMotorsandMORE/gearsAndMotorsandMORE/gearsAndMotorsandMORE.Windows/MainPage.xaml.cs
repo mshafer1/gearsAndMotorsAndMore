@@ -76,14 +76,19 @@ namespace gearsAndMotorsandMORE
             BitmapImage imageBitmap = new BitmapImage(imageUri);
             Image myImage = new Image();
             myImage.Source = imageBitmap;
-            myImage.Height = 200;
-            myImage.Width = 200;
+
+            if (motorLib.isMotor(itemToAdd.SandboxImagePath.ToString()))
+            {
+                myImage.Height = 200;
+                myImage.Width = 200;
+            }
 
             myGVImage.Content = myImage;
 
-            sandbox.Items.Remove(sandbox.Items.Last());
-            sandbox.Items.Add(myGVImage);
-            sandbox.Items.Add(dragHereImage);
+
+            sandbox.Children.Remove(sandbox.Children.Last());
+            sandbox.Children.Add(myGVImage);
+            sandbox.Children.Add(dragHereImage);
         }
 
         private void Motor_PointerMoved(object sender, PointerRoutedEventArgs e)
@@ -234,18 +239,18 @@ namespace gearsAndMotorsandMORE
 
         private void DeleteLast_Click(object sender, RoutedEventArgs e)
         {
-            sandbox.Items.Remove(sandbox.Items.Last());
-            sandbox.Items.Remove(sandbox.Items.Last());
-            sandbox.Items.Add(dragHereImage);
+            sandbox.Children.Remove(sandbox.Children.Last());
+            sandbox.Children.Remove(sandbox.Children.Last());
+            sandbox.Children.Add(dragHereImage);
 
             sandboxItemLib.SandboxItems.Remove(sandboxItemLib.SandboxItems.Last());
         }
 
         private void ClearAll_Click(object sender, RoutedEventArgs e)
         {
-            sandbox.Items.Clear();
+            sandbox.Children.Clear();
             sandboxItemLib.SandboxItems.Clear();
-            sandbox.Items.Add(dragHereImage);
+            sandbox.Children.Add(dragHereImage);
         }
     }
 }
