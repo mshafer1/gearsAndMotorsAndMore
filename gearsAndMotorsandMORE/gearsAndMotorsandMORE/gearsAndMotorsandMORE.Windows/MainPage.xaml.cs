@@ -288,7 +288,7 @@ namespace gearsAndMotorsandMORE
         private async void About_Click(object sender, RoutedEventArgs e)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                Frame.Navigate(typeof(About)));
+                Frame.Navigate(typeof(test)));
             //this.Frame.Navigate(typeof(About));
         }
 
