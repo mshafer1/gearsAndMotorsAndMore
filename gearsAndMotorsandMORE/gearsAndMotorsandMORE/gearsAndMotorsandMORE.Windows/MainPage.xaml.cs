@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -284,9 +285,11 @@ namespace gearsAndMotorsandMORE
 
         #endregion
 
-        private void About_Click(object sender, RoutedEventArgs e)
+        private async void About_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(About));
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                Frame.Navigate(typeof(About)));
+            //this.Frame.Navigate(typeof(About));
         }
 
         private void DeleteLast_Click(object sender, RoutedEventArgs e)
