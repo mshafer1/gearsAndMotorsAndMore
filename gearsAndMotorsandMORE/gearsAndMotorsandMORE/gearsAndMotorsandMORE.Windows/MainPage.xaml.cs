@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,7 +28,7 @@ namespace gearsAndMotorsandMORE
         IGearLibrary gearLib;
         IMotorLibrary motorLib;
         ISandboxItemLibrary sandboxItemLib;
-        GearBox gbCalculator;
+        static GearBox gbCalculator;
 
         bool pressed;
         bool isDragged;
@@ -45,6 +46,7 @@ namespace gearsAndMotorsandMORE
             motorLib = new ConstantMotors();
             sandboxItemLib = new ISandboxItemLibrary();
             gbCalculator = new GearBox();
+            
 
             lstViewGears.ItemsSource = gearLib.Gears;
             lstViewMotors.ItemsSource = motorLib.Motors;
@@ -52,6 +54,9 @@ namespace gearsAndMotorsandMORE
 
             isDragged = false;
             pressed = false;
+
+            gbCalculator.RobotWeight = System.Convert.ToInt32(WeightTextBox.Text);
+            gbCalculator.WheelRadius = (float)System.Convert.ToDouble(WheelTextBox.Text);
         }
 
 
@@ -89,7 +94,25 @@ namespace gearsAndMotorsandMORE
         private void doMath()
         {
             //throw new NotImplementedException();
-            gbCalculator.checkGearBox();
+            if(gbCalculator.checkGearBox())
+            {
+                ErrorTextBlock.Text = "";
+                MaxSpeedTextBlock.Text = gbCalculator.MaxSpeed.ToString();
+                if(gbCalculator.CanMove)
+                {
+                    OutputStackPanel.Background = new SolidColorBrush(Colors.Green);
+                }
+                else
+                {
+                    OutputStackPanel.Background = new SolidColorBrush(Colors.Red);
+                }
+            }
+            else
+            {
+                OutputStackPanel.Background = new SolidColorBrush(Colors.Red);
+                ErrorTextBlock.Text = "Motor speeds are not matched, please rearrange your gears.";
+            }
+
         }
 
         private void addImage(SandboxItem itemToAdd)
@@ -217,12 +240,14 @@ namespace gearsAndMotorsandMORE
                     Gear savedGear = gearLib.findGear("/" + s);
                     addImage(savedGear);
                     sandboxItemLib.SandboxItems.Add(savedGear);
+                    gbCalculator.Items.Add(savedGear);
                 }
                 else if(motorLib.isMotor(s))
                 {
                     Motor savedMotor = motorLib.findMotor("/" + s);
                     addImage(savedMotor);
                     sandboxItemLib.SandboxItems.Add(savedMotor);
+                    gbCalculator.Items.Add(savedMotor);
                 }
                 
             }
@@ -277,7 +302,7 @@ namespace gearsAndMotorsandMORE
                 gbCalculator.Items.Remove(gbCalculator.Items.Last());
             }
             lstViewGears.IsEnabled = gbCalculator.Items.Count != 0;
-
+            doMath();
         }
 
         private void ClearAll_Click(object sender, RoutedEventArgs e)
@@ -288,6 +313,33 @@ namespace gearsAndMotorsandMORE
             gbCalculator.Items.Clear();
 
             lstViewGears.IsEnabled = false;
+            doMath();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (sandboxItemLib.SandboxItems.Count == 0)
+            {
+                lstViewGears.IsEnabled = false;
+            }
+            else
+            {
+                doMath();
+            }
+            
+        }
+
+        private void WeightTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            gbCalculator.RobotWeight = System.Convert.ToInt32(WeightTextBox.Text);
+            doMath();
+        }
+
+
+        private void WheelTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            gbCalculator.WheelRadius = (float)System.Convert.ToDouble(WheelTextBox.Text);
+            doMath();
         }
     }
 }

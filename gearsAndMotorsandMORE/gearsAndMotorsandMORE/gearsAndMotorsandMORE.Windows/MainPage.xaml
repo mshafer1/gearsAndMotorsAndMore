@@ -5,7 +5,7 @@
     xmlns:local="using:gearsAndMotorsandMORE"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
     <Page.BottomAppBar>
         <CommandBar>
@@ -43,7 +43,7 @@
                     <TextBlock Text="Gears" FontSize="48" HorizontalAlignment="Center"></TextBlock>
                 </Border>
                 <Border Grid.Row="1" BorderBrush = "White" BorderThickness = "5">
-                    <ListView Margin="10"  Name="lstViewGears" IsEnabled="False">
+                    <ListView Margin="10"  Name="lstViewGears" SelectionMode="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -66,7 +66,7 @@
                     <TextBlock  Text="Motors" FontSize="48" HorizontalAlignment="Center"></TextBlock>
                 </Border>
                 <Border Grid.Row="1" BorderBrush = "White" BorderThickness = "5">
-                    <ListView Margin="10"  Name="lstViewMotors">
+                    <ListView Margin="10"  Name="lstViewMotors" SelectionMode="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -93,11 +93,12 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Height="75">
                             <TextBlock Text=" Robot Weight (lbs):" FontSize="25" Width="240" VerticalAlignment="Bottom"></TextBlock>
-                            <TextBox x:Name="WeightTextBox" Height="25" Width="100" VerticalAlignment="Bottom" ></TextBox>
+                            <TextBox x:Name="WeightTextBox" Height="25" Width="100" VerticalAlignment="Bottom" InputScope="Number" TextChanged="WeightTextBox_TextChanged" Text="10"></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height=" 75">
                             <TextBlock Text=" Wheel Diameter (in):" FontSize="25" Width="240" VerticalAlignment="Bottom"></TextBlock>
-                            <TextBox x:Name="WheelTextBox" Height="25" Width="100" VerticalAlignment="Bottom" ></TextBox>
+                            <TextBox x:Name="WheelTextBox" Height="25" Width="100" VerticalAlignment="Bottom" InputScope="Number" TextChanged="WheelTextBox_TextChanged" Text="2" ></TextBox>
+                               
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -117,13 +118,10 @@
                 <Border Grid.Row="1" BorderBrush = "White" BorderThickness = "5">
                     <StackPanel x:Name="OutputStackPanel">
                         <StackPanel Orientation="Horizontal" Height="75">
-                            <TextBlock Text=" Torque: " FontSize="25" VerticalAlignment="Bottom"></TextBlock>
-                            <TextBlock x:Name="TorqueTextBlock" FontSize="25" VerticalAlignment="Bottom"></TextBlock>
+                            <TextBlock Text=" Max Speed (ft/sec): " FontSize="25" VerticalAlignment="Bottom"></TextBlock>
+                            <TextBlock x:Name="MaxSpeedTextBlock" FontSize="25" VerticalAlignment="Bottom"></TextBlock>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Height="75">
-                            <TextBlock Text=" Max Pushing Force: " FontSize="25" VerticalAlignment="Bottom"></TextBlock>
-                            <TextBlock x:Name="PushingTextBlock" FontSize="25" VerticalAlignment="Bottom"></TextBlock>
-                        </StackPanel>
+                        <TextBlock x:Name="ErrorTextBlock" FontSize="34.667" VerticalAlignment="Bottom" FontWeight="Bold" TextWrapping="WrapWholeWords" Foreground="#FF020000" Margin="0,100,0,0" TextAlignment="Center" />
                     </StackPanel>
                 </Border>
             </Grid>

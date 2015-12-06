@@ -93,7 +93,12 @@ namespace gearsAndMotorsandMORE
                 }
             }
             FinalTorque = netTorque/finalGearRatio;
-            maxSpeed = (RPM * finalGearRatio)/*final max rpm*/ * (WheelRadius/12 /*convert to feet*/) /*convert to linear speed*/;
+            maxSpeed = (RPM * finalGearRatio)/*final max rpm*/ * ((WheelRadius * 2 * (float)Math.PI)/12 /*convert to feet*/ /60 /*convert to s*/)/*convert to linear speed*/;
+            if(maxSpeed <=0)
+            {
+                canWork = false;
+                maxSpeed = 0;
+            }
             return canWork;
         }
 

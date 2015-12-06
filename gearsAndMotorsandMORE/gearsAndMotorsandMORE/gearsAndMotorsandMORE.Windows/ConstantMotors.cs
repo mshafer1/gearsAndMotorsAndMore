@@ -15,11 +15,11 @@ namespace gearsAndMotorsandMORE
                 SideImagePath = "Assets/BaneBots-M7‐RS775‐18.png",
                 FrontImagePath = "Assets/BaneBots-M7‐RS775‐18.png",
                 CommonName = "BaneBots RS775",
-                FreeCurrent = 1.0f,
-                FreeRPM = 300,
+                FreeCurrent = 1.8f,
+                FreeRPM = 13000,
                 PartNumber = "M7-RS775",
-                StallCurrent = 130.0f,
-                StallTorque = 5.3f
+                StallCurrent = 86.7f,
+                StallTorque = .5875f
             };
             addMotor(motor);
 
