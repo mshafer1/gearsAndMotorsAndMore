@@ -285,11 +285,9 @@ namespace gearsAndMotorsandMORE
 
         #endregion
 
-        private async void About_Click(object sender, RoutedEventArgs e)
+        private void About_Click(object sender, RoutedEventArgs e)
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                Frame.Navigate(typeof(test)));
-            //this.Frame.Navigate(typeof(About));
+            this.Frame.Navigate(typeof(About));
         }
 
         private void DeleteLast_Click(object sender, RoutedEventArgs e)
