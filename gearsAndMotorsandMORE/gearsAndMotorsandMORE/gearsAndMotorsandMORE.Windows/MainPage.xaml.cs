@@ -105,6 +105,7 @@ namespace gearsAndMotorsandMORE
                 }
                 else
                 {
+                    MaxSpeedTextBlock.Text = "0";
                     OutputStackPanel.Background = new SolidColorBrush(Colors.Red);
                 }
             }
